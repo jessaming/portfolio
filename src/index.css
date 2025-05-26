@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Ms+Madi&display=swap');
+@import "tailwindcss";
+
+:root{
+    --body-font: 'Inter', sans-serif;
+    --background-color: #f5f4f9;
+    --text-primary: #0b2866;
+    --text-secondary: #7d89a0;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    margin-inline: 20px;
+}
+
+.text-secondary {
+    color: var(--text-primary);
+    opacity: 0.7;
+}   
+
+.font-inter-100 {
+    font-weight: 100;
+}
+.font-inter-200 {
+    font-weight: 200;
+}
+.font-inter-300 {
+    font-weight: 300;
+}
+.font-inter-400 {
+    font-weight: 400;
+}
+.font-inter-500 {
+    font-weight: 500;
+}
+.font-inter-600, b {
+    font-weight: 600;
+}
+.font-inter-700 {
+    font-weight: 700;
+}
+.font-inter-800 {
+    font-weight: 800;
+}
+.font-italic {
+    font-style: italic;
+}
+
+
+
+/* hover underline */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--text-primary);
+  opacity: 0.8;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+.hover-underline-animation.left::after {
+  transform-origin: bottom right;
+}
+
+.hover-underline-animation.left:hover::after {
+  transform-origin: bottom left;
+}

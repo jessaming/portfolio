@@ -30,6 +30,7 @@ const Contact = () => {
           );
         })}
       </div>
+      <div className="pb-20 h-2"></div>
     </div>
   );
 };

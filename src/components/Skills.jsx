@@ -147,7 +147,7 @@ const Skills = () => {
             <div
               className={`w-2 h-2 rounded-full ${getDotColor("Advanced")}`}
             ></div>
-            <span className="text-[9px] md:text-xs font-inter-300 text-secondary">
+            <span className="text-[9px] text-left md:text-xs font-inter-300 text-secondary">
               Highly familiar; regularly used in projects; can build
               independently
             </span>
@@ -157,7 +157,7 @@ const Skills = () => {
             <div
               className={`w-2 h-2 rounded-full ${getDotColor("Intermediate")}`}
             ></div>
-            <span className="text-[9px] md:text-xs font-inter-300 text-secondary">
+            <span className="text-[9px] text-left md:text-xs font-inter-300 text-secondary">
               Used in projects; can work with minimal guidance
             </span>
           </div>
@@ -166,7 +166,7 @@ const Skills = () => {
             <div
               className={`w-2 h-2 rounded-full ${getDotColor("Beginner")}`}
             ></div>
-            <span className="text-[9px] md:text-xs font-inter-300 text-secondary">
+            <span className="text-[9px] text-left md:text-xs font-inter-300 text-secondary">
               Basic understanding and initial exposure; familiar with
               fundamentals
             </span>

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+src/constants/contact_list.js
+src/constants/work_img.js
+public/logo.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

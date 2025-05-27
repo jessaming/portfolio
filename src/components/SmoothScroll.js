@@ -8,7 +8,7 @@
      plugins: {
        overscroll: {
          enable: true,
-         damping: 0.05,
+         damping: 0.07,
          effect: 'bounce',
          glowColor: '#7d89a0',
          maxOverscroll: 180,

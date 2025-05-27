@@ -61,12 +61,12 @@ const Works = ({ setActiveSection }) => {
                 <div className="w-full lg:w-3/5 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-none mx-auto lg:mx-0 space-y-3 text-left">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-secondary font-semibold text-xs uppercase tracking-wider">
-                        Work {String(index + 1).padStart(2)}
+                      <span className="text-secondary font-semibold text-xs uppercase tracking-normal">
+                        {project.category}
                       </span>
                     </div>
 
-                    <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-primary leading-tight">
+                    <h2 className="text-xl xl:text-2xl font-bold text-primary leading-tight">
                       {project.title}
                     </h2>
 

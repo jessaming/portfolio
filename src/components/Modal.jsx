@@ -1,5 +1,6 @@
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
   const [modalIndex, setModalIndex] = useState(currentIndex);
@@ -51,17 +52,20 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 ${
-        isVisible ? "bg-black/90 backdrop-blur-sm" : "bg-black/0"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={handleClose}
+      style={{ overflow: "hidden" }}
     >
-      {/* Close button */}
       <button
-        onClick={handleClose}
-        className={`absolute top-4 right-4 p-2 text-white hover:text-gray-300 transition-all duration-300 z-10 ${
+        onClick={(e) => {
+          e.stopPropagation();
+          handleClose();
+        }}
+        className={`absolute top-4 right-4 p-2 text-white hover:text-gray-300 transition-all duration-300 z-50 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
         }`}
         aria-label="Close modal"
@@ -69,7 +73,6 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
         <X size={24} />
       </button>
 
-      {/* Navigation arrows */}
       {images.length > 1 && (
         <>
           <button
@@ -77,7 +80,7 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
               e.stopPropagation();
               prevImage();
             }}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white hover:text-gray-300 transition-all duration-300 z-10 ${
+            className={`absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white hover:text-gray-300 transition-all duration-300 z-50 ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-4"
@@ -91,7 +94,7 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
               e.stopPropagation();
               nextImage();
             }}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white hover:text-gray-300 transition-all duration-300 z-10 ${
+            className={`absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white hover:text-gray-300 transition-all duration-300 z-50 ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-4"
@@ -103,56 +106,32 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
         </>
       )}
 
-      {/* Image */}
       <div
-        className={`relative max-w-[70vw] max-h-[70vh] sm:max-w-[75vw] sm:max-h-[75vh] md:max-w-[80vw] md:max-h-[80vh] lg:max-w-[60vw] lg:max-h-[70vh] xl:max-w-[50vw] xl:max-h-[60vh] flex items-center justify-center transition-all duration-500 ${
+        className={`relative max-w-[90vw] max-h-[90vh] flex items-center justify-center transition-all duration-500 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}
         onClick={(e) => e.stopPropagation()}
+        style={{ overflowY: "auto", borderRadius: "8px" }}
       >
         <img
           src={images[modalIndex] || "/placeholder.svg"}
           alt={`${title} - Image ${modalIndex + 1}`}
-          className="max-w-full max-h-full object-contain transition-opacity duration-300"
+          className="max-w-[70vw] max-h-[70vh] object-contain"
+          draggable={false}
         />
       </div>
 
-      {/* Image counter */}
       {images.length > 1 && (
         <div
-          className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full transition-all duration-300 ${
+          className={`absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full transition-all duration-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           {modalIndex + 1} / {images.length}
         </div>
       )}
-
-      {/* Dot indicators */}
-      {images.length > 1 && (
-        <div
-          className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-2 transition-all duration-300 delay-100 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={(e) => {
-                e.stopPropagation();
-                setModalIndex(index);
-              }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === modalIndex
-                  ? "bg-white scale-110"
-                  : "bg-white/50 hover:bg-white/80"
-              }`}
-              aria-label={`Go to image ${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+    </div>,
+    document.body
   );
 };
 

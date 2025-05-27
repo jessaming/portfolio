@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-color: transparent transparent; /* Chrome, Safari and Opera */
+}
 .logo {
   height: 6em;
   padding: 1.5em;

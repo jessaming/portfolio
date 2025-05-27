@@ -1,36 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Contact from './components/Contact'
-import Skills from './components/Skills'
-import Home from './components/Home'
-import Side from './components/Side'
-import About from './components/About'
-import Works from './components/Works'
+import { useState } from "react";
+import "./App.css";
+import Contact from "./components/Contact";
+import Skills from "./components/Skills";
+import Home from "./components/Home";
+import Side from "./components/Side";
+import About from "./components/About";
+import Works from "./components/Works";
+import useIsLargeScreen from "./hooks/screen";
+import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
+import Scroll from "./components/SmoothScroll";
 
 function App() {
-
-    const [activeSection, setActiveSection] = useState('/');
+  const isLargeScreen = useIsLargeScreen();
+  const [activeSection, setActiveSection] = useState("about");
 
   return (
     <>
-     <header>
-        <Home />
+      <Scroll />
+      <header>
+        <Home setActiveSection={setActiveSection} />
       </header>
       <div className="flex flex-col-reverse lg:flex-row">
         <main className="w-full lg:w-7/8 py-4 px-2">
-          {activeSection === 'about' && <About />}
-          {activeSection === 'skills' && <Skills />}
-          {activeSection === 'works' && <Works />}
-          {activeSection === 'contact' && <Contact />}
+          {isLargeScreen ? (
+            <>
+              {activeSection === "about" && <About />}
+              {activeSection === "skills" && <Skills />}
+              {activeSection === "works" && <Works />}
+              {activeSection === "contact" && <Contact />}
+            </>
+          ) : (
+            <>
+              <About />
+              <Skills />
+              <Works />
+              <Contact />
+            </>
+          )}
         </main>
         <aside className="hidden lg:block w-full lg:w-1/8 py-4 px-2">
-          <Side activeSection={activeSection} setActiveSection={setActiveSection} />
+          <Side
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+          />
         </aside>
       </div>
+      <ScrollToTop />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

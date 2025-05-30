@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
   const [modalIndex, setModalIndex] = useState(currentIndex);
   const [isVisible, setIsVisible] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
 
   useEffect(() => {
     setModalIndex(currentIndex);
@@ -26,10 +27,12 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
 
   const nextImage = () => {
     setModalIndex((prev) => (prev + 1) % images.length);
+    setZoomLevel(1);
   };
 
   const prevImage = () => {
     setModalIndex((prev) => (prev - 1 + images.length) % images.length);
+    setZoomLevel(1);
   };
 
   const handleKeyDown = (e) => {
@@ -41,6 +44,10 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
   const handleClose = () => {
     setIsVisible(false);
     setTimeout(() => onClose(), 200);
+  };
+
+  const handleImageClick = () => {
+    setZoomLevel((prev) => (prev === 1 ? 1.5 : 1));
   };
 
   useEffect(() => {
@@ -117,7 +124,12 @@ const ImageModal = ({ isOpen, onClose, images, currentIndex, title }) => {
           src={images[modalIndex] || "/placeholder.svg"}
           alt={`${title} - Image ${modalIndex + 1}`}
           className="max-w-[70vw] max-h-[70vh] object-contain"
+          style={{
+            transform: `scale(${zoomLevel})`,
+            transition: "transform 0.3s ease",
+          }}
           draggable={false}
+          onClick={handleImageClick}
         />
       </div>
 

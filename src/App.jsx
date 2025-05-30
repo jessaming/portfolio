@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 import Contact from "./components/Contact";
 import Skills from "./components/Skills";
@@ -13,12 +13,13 @@ import Scroll from "./components/SmoothScroll";
 function App() {
   const isLargeScreen = useIsLargeScreen();
   const [activeSection, setActiveSection] = useState("about");
+  const contactRef = useRef(null);
 
   return (
     <>
       <Scroll />
       <header>
-        <Home setActiveSection={setActiveSection} />
+        <Home setActiveSection={setActiveSection} contactRef={contactRef} />
       </header>
       <div className="flex flex-col-reverse lg:flex-row">
         <main className="w-full lg:w-7/8 py-4 px-2">
@@ -34,7 +35,7 @@ function App() {
               <About />
               <Skills />
               <Works />
-              <Contact />
+              <Contact ref={contactRef} />
             </>
           )}
         </main>

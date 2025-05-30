@@ -32,7 +32,7 @@ const Works = ({ setActiveSection }) => {
 
   return (
     <div>
-      <Title title="Explore the creations." />
+      <Title title="Explore the creations" />
       <div className="max-w-7xl mx-auto px-4 py-6 animate-fadeInUp pb-20">
         <div className="relative">
           <div className="space-y-12">

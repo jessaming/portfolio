@@ -1,8 +1,10 @@
 import React from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import gradientBg from "../assets/blue-gradient.mp4";
+import gradientBg from "../assets/gradientbg.gif";
+import useIsLargeScreen from "../hooks/screen";
 
-const Home = ({ setActiveSection }) => {
+const Home = ({ setActiveSection, contactRef }) => {
+  const isLargeScreen = useIsLargeScreen();
   const [title] = useTypewriter({
     words: [
       "Front-end Developer",
@@ -16,6 +18,20 @@ const Home = ({ setActiveSection }) => {
     delaySpeed: 3000,
   });
 
+  const handleConnectClick = () => {
+    if (isLargeScreen) {
+      setActiveSection("contact");
+    } else {
+      if (contactRef.current) {
+        contactRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="w-full h-1/2 flex flex-col justify-center items-center">
       <div className="mt-10 md:mt-15 flex flex-col md:flex-row justify-between items-center w-full">
@@ -28,21 +44,21 @@ const Home = ({ setActiveSection }) => {
       </div>
 
       <div className="w-full h-[10vh] lg:h-[12vh] mt-5 mb-5 lg:mt-10 lg:mb-10">
-        <video
+        <img
           src={gradientBg}
-          autoPlay
-          loop
-          muted
+          alt="Animated Background"
           className="w-full h-full m-0 opacity-90 rounded-2xl object-cover"
+          onContextMenu={handleContextMenu}
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
         />
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center w-full">
         <div className="invisible md:visible md:w-1/4">
           <button
-            onClick={() => {
-              setActiveSection("contact");
-            }}
+            onClick={handleConnectClick}
             class="group relative inline-flex h-12 items-center justify-center px-6 md:text-sm lg:text-lg font-inter-400 text-primary/80"
           >
             <span className="uppercase hover-underline-animation hover:font-semibold">

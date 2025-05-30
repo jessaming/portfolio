@@ -39,7 +39,7 @@ const Skills = () => {
 
   return (
     <div className="px-6 max-w-7xl mx-auto pb-20">
-      <Title title="Skills on display." />
+      <Title title="Skills on display" />
 
       <div className="relative">
         <div className="relative">

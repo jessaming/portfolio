@@ -3,7 +3,7 @@
    import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 
    var options = {
-     damping: 0.03,
+     damping: 0.05,
      renderByPixels: true,
      plugins: {
        overscroll: {

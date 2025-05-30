@@ -84,7 +84,7 @@ export const projects = [
     id: 9,
     title: "Shopee Redesign",
     description:
-      "Reimagined and improved an e-commerce platform's UI/UX for better usability.",
+      "Reimagined and improved an e-commerce platform’s UI/UX for better usability.",
     images: projectImages.shopred,
     technologies: ["Figma"],
     category: "UI/UX Design",

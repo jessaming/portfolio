@@ -1,10 +1,11 @@
 import Title from "./Title";
 import { contactMethods } from "../constants/contact_list";
+import React from "react";
 
-const Contact = () => {
+const Contact = React.forwardRef((props, ref) => {
   return (
-    <div className="pb-12 px-6 max-w-7xl mx-auto">
-      <Title title="Let's Connect!" />
+    <div ref={ref} className="pb-12 px-6 max-w-7xl mx-auto">
+      <Title title="Let’s Connect!" />
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-3xl mx-auto">
         {contactMethods.map((method) => {
@@ -33,6 +34,6 @@ const Contact = () => {
       <div className="pb-20 h-2"></div>
     </div>
   );
-};
+});
 
 export default Contact;

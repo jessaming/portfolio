@@ -7,7 +7,7 @@ import Side from "./components/Side";
 import About from "./components/About";
 import Works from "./components/Works";
 import useIsLargeScreen from "./hooks/screen";
-import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
+import ScrollToTop from "./components/ScrollToTop";
 import Scroll from "./components/SmoothScroll";
 
 function App() {

@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jessaming.github.io/portfolio",
+  "homepage": "https://jessaming.github.io/portfoliov2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

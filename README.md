@@ -1,1 +1,1 @@
-Portfolio Link v2: https://jessaming.github.io/portfoliov2/
+Portfolio Link v2: https://jessaming.github.io/portfolio/

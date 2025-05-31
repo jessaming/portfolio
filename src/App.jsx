@@ -9,6 +9,7 @@ import Works from "./components/Works";
 import useIsLargeScreen from "./hooks/screen";
 import ScrollToTop from "./components/ScrollToTop";
 import Scroll from "./components/SmoothScroll";
+import Footer from "./components/Footer";
 
 function App() {
   const isLargeScreen = useIsLargeScreen();
@@ -36,6 +37,7 @@ function App() {
               <Skills />
               <Works />
               <Contact ref={contactRef} />
+              <Footer />
             </>
           )}
         </main>

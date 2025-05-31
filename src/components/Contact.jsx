@@ -4,7 +4,7 @@ import React from "react";
 
 const Contact = React.forwardRef((props, ref) => {
   return (
-    <div ref={ref} className="pb-12 px-6 max-w-7xl mx-auto">
+    <div ref={ref} className="-mb-30 lg:mb-0 lg:pb-12 px-6 max-w-7xl mx-auto">
       <Title title="Let’s Connect!" />
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-3xl mx-auto">

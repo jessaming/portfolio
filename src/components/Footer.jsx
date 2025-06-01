@@ -31,7 +31,7 @@ const Footer = ({
       </div> */}
 
       {/* second version */}
-      <div className="absolute bottom-0 left-0 w-full bg-primary text-left">
+      <div className="relative rounded-full -mb-24 mx-auto w-full bg-primary text-left">
         <a
           href="https://jessaming.github.io/jjg-portfolio/"
           target="_blank"

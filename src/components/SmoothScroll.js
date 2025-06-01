@@ -9,7 +9,7 @@
        overscroll: {
          enable: true,
          damping: 0.07,
-         effect: 'bounce',
+         effect: 'glow',
          glowColor: '#7d89a0',
          maxOverscroll: 180,
        }
